@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  build-and-deploy:
+  install-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,12 +24,9 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Build Project
-        run: npm run build
-
       - name: Deploy (Optional)
         if: github.ref == 'refs/heads/main'
         run: |
-          echo "Deploying build..."
-          # Example deployment step
-          # rsync -avz ./build/ user@yourserver.com:/var/www/html/
+          echo "Deploying..."
+          # Example deploy step:
+          # rsync -avz . user@yourserver.com:/var/www/html/
